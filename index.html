@@ -69,13 +69,23 @@
 
 
     <!-- ========================= -->
-    <!-- BLOQUE 2 — VISUAL FIJO -->
+    <!-- BLOQUE 2 — TOGGLE -->
     <!-- ========================= -->
     <h2>Visual 2 — Ranking compuesto (2024)</h2>
 
-    <div class="viz-container">
+    <div class="toggle-buttons">
+        <button onclick="showFig('fig2_1', 'fig2_2')">Vista 1</button>
+        <button onclick="showFig('fig2_2', 'fig2_1')">Vista 2</button>
+    </div>
+
+    <div id="fig2_1" class="viz-container">
         <iframe src="html/fig2_1.html" width="100%" height="600" frameborder="0"></iframe>
     </div>
+
+    <div id="fig2_2" class="viz-container" style="display:none;">
+        <iframe src="html/fig2_2.html" width="100%" height="600" frameborder="0"></iframe>
+    </div>
+
 
 
     <!-- ========================= -->
