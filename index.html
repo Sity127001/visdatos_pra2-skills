@@ -1,0 +1,151 @@
+ 
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard — Provisional</title>
+
+    <!-- Cargar Plotly solo una vez -->
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            background: #fafafa;
+        }
+
+        h2 {
+            margin-top: 60px;
+            color: #333;
+        }
+
+        .toggle-buttons {
+            margin-bottom: 15px;
+        }
+
+        .toggle-buttons button {
+            padding: 8px 16px;
+            margin-right: 10px;
+            border: none;
+            background: #0078d4;
+            color: white;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .toggle-buttons button:hover {
+            background: #005fa3;
+        }
+
+        .viz-container {
+            border: 1px solid #ddd;
+            padding: 10px;
+            background: white;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ========================= -->
+    <!-- BLOQUE 1 — TOGGLE A -->
+    <!-- ========================= -->
+    <h2>Visual 1 — Distribución general (toggle)</h2>
+
+    <div class="toggle-buttons">
+        <button onclick="showFig('fig1_1', 'fig1_2')">Vista 1</button>
+        <button onclick="showFig('fig1_2', 'fig1_1')">Vista 2</button>
+    </div>
+
+    <div id="fig1_1" class="viz-container">
+        <!-- Insertar HTML del gráfico -->
+        <iframe src="html/fig1_1.html" width="100%" height="600" frameborder="0"></iframe>
+    </div>
+
+    <div id="fig1_2" class="viz-container" style="display:none;">
+        <iframe src="html/fig1_2.html" width="100%" height="600" frameborder="0"></iframe>
+    </div>
+
+
+    <!-- ========================= -->
+    <!-- BLOQUE 2 — VISUAL FIJO -->
+    <!-- ========================= -->
+    <h2>Visual 2 — Ranking compuesto (2024)</h2>
+
+    <div class="viz-container">
+        <iframe src="html/fig2_1.html" width="100%" height="600" frameborder="0"></iframe>
+    </div>
+
+
+    <!-- ========================= -->
+    <!-- BLOQUE 3 — TOGGLE B -->
+    <!-- ========================= -->
+    <h2>Visual 3 — Comparativa TOP10 vs Evolución por país</h2>
+
+    <div class="toggle-buttons">
+        <button onclick="showFig('fig3_2', 'fig3_1')">TOP 10</button>
+        <button onclick="showFig('fig3_1', 'fig3_2')">Dual Axis</button>
+    </div>
+
+    <div id="fig3_2" class="viz-container">
+        <iframe src="html/fig3_2.html" width="100%" height="600" frameborder="0"></iframe>
+    </div>
+
+    <div id="fig3_1" class="viz-container" style="display:none;">
+        <iframe src="html/fig3_1.html" width="100%" height="600" frameborder="0"></iframe>
+    </div>
+
+
+    <!-- ========================= -->
+    <!-- BLOQUE 4 — VISUAL FIJO -->
+    <!-- ========================= -->
+    <h2>Visual 4 — Distribución de salarios (2024)</h2>
+
+    <div class="viz-container">
+        <iframe src="html/fig4.html" width="100%" height="600" frameborder="0"></iframe>
+    </div>
+
+
+    <!-- ========================= -->
+    <!-- BLOQUE 5 — VISUAL FIJO (con toggle interno) -->
+    <!-- ========================= -->
+    <h2>Visual 5 — Demanda vs Popularidad de Skills (2024)</h2>
+
+    <div class="viz-container">
+        <iframe src="html/fig5.html" width="100%" height="600" frameborder="0"></iframe>
+    </div>
+
+
+    <!-- ========================= -->
+    <!-- BLOQUE 6 — VISUAL FIJO -->
+    <!-- ========================= -->
+    <h2>Visual 6 — Tendencias globales (2024)</h2>
+
+    <div class="viz-container">
+        <iframe src="html/fig6.html" width="100%" height="600" frameborder="0"></iframe>
+    </div>
+
+
+    <!-- ========================= -->
+    <!-- BLOQUE 7 — VISUAL FIJO -->
+    <!-- ========================= -->
+    <h2>Visual 7 — Proyección del mercado laboral</h2>
+
+    <div class="viz-container">
+        <iframe src="html/fig7.html" width="100%" height="600" frameborder="0"></iframe>
+    </div>
+
+
+    <!-- ========================= -->
+    <!-- SCRIPT PARA LOS TOGGLES -->
+    <!-- ========================= -->
+    <script>
+        function showFig(showId, hideId) {
+            document.getElementById(showId).style.display = "block";
+            document.getElementById(hideId).style.display = "none";
+        }
+    </script>
+
+</body>
+</html>
