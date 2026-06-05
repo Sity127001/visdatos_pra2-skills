@@ -1,0 +1,14 @@
+name: visdatos-pra2
+channels:
+  - defaults
+dependencies:
+  - python=3.11
+  - numpy
+  - jupyterlab
+  - pandas
+  - seaborn
+  - matplotlib
+  - notebook
+  - openpyxl
+  - pyarrow
+prefix: C:\Users\Titanio\anaconda3\envs\visdatos-pra2
