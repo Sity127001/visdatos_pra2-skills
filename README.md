@@ -1,4 +1,10 @@
-# visdatos_pra2-skills - repositorio git
+Máster en Ciencia de Datos
+
+Universitat Oberta de Catalunya 
+ 
+Autoría: Tatyana Silchenko
+  
+# Data Career Atlas (2020–2024)
 
 ## Estructura de carpetas: 
 ```
@@ -9,9 +15,9 @@ visdatos_pra2-skills/
 ├── README.md       
 │
 ├── html/             
-│     ├── fig1....html
+│     ├── fig1..html
 │     ...
-│     └── fig7.html
+│     └── fig7..html
 │
 ├── notebooks/
 │     └── etl-skills_visdatos_pra2.ipynb
@@ -29,11 +35,61 @@ visdatos_pra2-skills/
 │     │     └── countries_scores.csv
 
 ```
-# Data Career Atlas (2020–2024)
+---
+
+# Reproducibilidad
+1. clonar el proyecto: Abrir una terminal (CMD, PowerShell, Anaconda Prompt) 
+y ejecutar:
+```
+git clone https://github.com/Sity127001/visdatos_pra2-skills.git
+```
+2. Situarse en la carpeta del repositorio clonado, 
+por ejemplo - si se clona en el disco C:\ reemplasar User:
+```
+cd C:\Users\User\visdatos_pra2-skills
+```
+3. Crear el entorno definido en el fichero environment.yml:
+```
+conda env create -f environment.yml 
+```
+4. activar el entorno
+```
+conda activate visdatos-pra2
+```
+5. Abrir el Jupyter notebook desde Anaconda o desde Visual Studio Code y ejecutar el 
+notebook:
+```
+etl-skills_visdatos_pra2.ipynb
+```
+La ejecución del notebook genera los ficheros procesados y los gráficos HTML utilizados 
+posteriormente para construir la visualización final.
+
+6. Personalización de la visualización
+El archivo `index.html` puede editarse mediante Visual Studio Code 
+para modificar aspectos visuales como colores, tipografías, estilos o 
+distribución de elementos y/o modificación de los mismos gráficos - filtros adicionales etc.
+
+7. Publicación de la visualización
+
+La visualización puede publicarse mediante:
+
+- GitHub Pages, utilizando el archivo `index.html` almacenado en el repositorio.
+- Netlify, desplegando directamente el archivo `index.html` o el contenido completo 
+del proyecto.
+
+Una vez publicado, se obtiene una URL pública para acceder a la visualización desde 
+cualquier navegador.
+
+El enlace generado:
+```
+https://bright-squirrel-f04335.netlify.app/
+```
+---
 
 ## Descripción general
 
-**Data Career Atlas** es un proyecto de análisis y visualización que integra datos económicos, sociales y laborales para responder dos preguntas clave:
+**Data Career Atlas** es un proyecto de análisis y visualización que integra datos económicos,
+sociales y laborales para responder dos preguntas clave:
 
 - **Dónde se vive mejor** como profesional de datos (2020–2024).  
 - **Qué skills y roles** permiten acceder a esas oportunidades (zoom 2024).
@@ -244,15 +300,5 @@ El dashboard HTML **Data Career Atlas · 2020–2024** presenta:
 - Acto 2: skills, roles y demanda laboral 2024  
 
 
-# 7. Reproducibilidad
-El archivo environment.yml permite reconstruir el entorno Conda del proyecto y ejecutar notebook de EDA.
-
----
-
-# 8. Autoría
-
-**Tatyana Silchenko**  
-Data Science & Data Engineering  
-2020–2024
 
 
