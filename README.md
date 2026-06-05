@@ -111,9 +111,9 @@ Skills, roles y demanda real en job postings.
 Todos los datasets fueron estandarizados mediante:
 
 - `pycountry` para nombres oficiales  
-- UN M49 / ISO 3166 para regiones y códigos  
-- Corrección manual de variantes lingüísticas y duplicados  
-- Diccionario local en Parquet para evitar dependencias externas  
+- UN M49 / ISO 3166 para regiones y códigos de país, obtenido mediante scraping responsable 
+y guardado como diccionario local en formato Parquet para evitar dependencias externas.  
+  - Corrección manual de variantes lingüísticas y duplicados  
 
 **Fuente oficial:**  
 https://unstats.un.org/unsd/methodology/m49/
@@ -143,14 +143,9 @@ https://unstats.un.org/unsd/methodology/m49/
 
 ## 1.4 Cálculo de salario real
 
-
-
-\[
-salary\_real = \frac{salary\_in\_usd}{cost\_of\_living\_index}
-\]
-
-
-
+```
+salary_real = salary_in_usd / cost_of_living_index
+```
 ---
 
 ## 1.5 Normalización min–max
@@ -296,7 +291,7 @@ Acto 2 define la ruta profesional.
 
 El dashboard HTML **Data Career Atlas · 2020–2024** presenta:
 
-- Acto 1: evolución y cierre 2024  
+- Acto 1: evolución 2020 - 2024 y cierre 2024  
 - Acto 2: skills, roles y demanda laboral 2024  
 
 
