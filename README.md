@@ -1,6 +1,7 @@
 # visdatos_pra2-skills - repositorio git
 
 ## Estructura de carpetas: 
+```
 visdatos_pra2-skills/
 │
 ├── index.html 
@@ -27,6 +28,7 @@ visdatos_pra2-skills/
 │     │     │     ...
 │     │     └── countries_scores.csv
 
+```
 # Data Career Atlas (2020–2024)
 
 ## Descripción general
