@@ -14,7 +14,7 @@ visdatos_pra2-skills/
 │     └── fig7.html
 │
 ├── notebooks/
-│     └── eda-skills_visdatos_pra2.ipynb
+│     └── etl-skills_visdatos_pra2.ipynb
 │
 ├── data/
 │     ├── raw/
