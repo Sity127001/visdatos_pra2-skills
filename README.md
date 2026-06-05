@@ -1,23 +1,330 @@
-# visdatos_pra2-skills
+# visdatos_pra2-skills - repositorio git
 
+## Estructura de carpetas: 
 visdatos_pra2-skills/
 │
-├── index.html        - AQUÍ, en la raíz
+├── index.html 
+│  
+├── README.md       
 │
-├── html/             - carpeta con todos los gráficos
-│     ├── fig1_1.html
-│     ├── fig1_2.html
-│     ├── fig2_1.html
-│     ├── fig3_1.html
-│     ├── fig3_2.html
-│     ├── fig4.html
-│     ├── fig5.html
-│     ├── fig6.html
+├── html/             
+│     ├── fig1....html
+│     ...
 │     └── fig7.html
 │
 ├── notebooks/
-│     └── eda-skills.ipynb
+│     └── eda-skills_visdatos_pra2.ipynb
 │
-└── data/
+├── data/
+│     ├── raw/
+│     │     ├── stackover/..
+│     │     ├── stackover_20-21/..
+│     │     ├── un_m49_snapshot.parquet
+│     │     │     ...
+│     │     └── WHR26_Data_Figure_2.1.xlsx
+│     ├── processed/
+│     │     ├── 1_salaries_country.csv
+│     │     │     ...
+│     │     └── countries_scores.csv
+
+Data Career Atlas (2020–2024)
+Descripción general
+Data Career Atlas es un proyecto de análisis y visualización que integra datos económicos, sociales y laborales para responder dos preguntas clave:
+
+Dónde se vive mejor como profesional de datos (2020–2024).
+
+Qué skills y roles permiten acceder a esas oportunidades (zoom 2024).
+
+El proyecto se estructura en dos actos:
+
+Acto 1 — “Dónde se vive bien” (2020–2024):  
+Salarios, coste de vida, felicidad, educación e índice compuesto.
+
+Acto 2 — “Qué te lleva ahí” (2024):  
+Skills, roles y demanda real en job postings.
+
+1. Procesamiento y limpieza de datos
+1.1 Normalización global de países
+Todos los datasets fueron estandarizados mediante:
+
+pycountry para nombres oficiales.
+
+UN M49 / ISO 3166 para regiones y códigos.
+
+Corrección manual de variantes lingüísticas y duplicados.
+
+Construcción de un diccionario local en Parquet para evitar dependencias externas.
+
+Fuente oficial:  
+https://unstats.un.org/unsd/methodology/m49/
+
+1.2 Normalización de skills
+Conversión a minúsculas.
+
+Limpieza de símbolos y espacios.
+
+Explode de listas de skills en job postings.
+
+Consolidación de 233 skills únicas en 2024.
+
+Unificación de categorías profesionales.
+
+1.3 Filtrado temporal
+Todos los datasets se limitaron a 2020–2024.
+
+Job postings únicamente 2024.
+
+Stack Overflow:
+
+2020–2021 → ficheros TXT
+
+2022–2025 → ficheros CSV
+Integrados mediante carga iterativa y normalización de columnas.
+
+1.4 Cálculo de salario real
+𝑠
+𝑎
+𝑙
+𝑎
+𝑟
+𝑦
+_
+𝑟
+𝑒
+𝑎
+𝑙
+=
+𝑠
+𝑎
+𝑙
+𝑎
+𝑟
+𝑦
+_
+𝑖
+𝑛
+_
+𝑢
+𝑠
+𝑑
+𝑐
+𝑜
+𝑠
+𝑡
+_
+𝑜
+𝑓
+_
+𝑙
+𝑖
+𝑣
+𝑖
+𝑛
+𝑔
+_
+𝑖
+𝑛
+𝑑
+𝑒
+𝑥
+1.5 Normalización min–max
+Aplicada a:
+
+salario real
+
+felicidad
+
+educación
+
+1.6 Índice compuesto (country_score)
+Ponderación basada en relevancia para calidad de vida:
+
+50% salario real normalizado
+
+30% felicidad normalizada
+
+20% educación normalizada
+
+𝑐
+𝑜
+𝑢
+𝑛
+𝑡
+𝑟
+𝑦
+_
+𝑠
+𝑐
+𝑜
+𝑟
+𝑒
+=
+0.5
+⋅
+𝑠
+𝑎
+𝑙
+𝑎
+𝑟
+𝑦
+_
+𝑟
+𝑒
+𝑎
+𝑙
+_
+𝑛
+𝑜
+𝑟
+𝑚
++
+0.3
+⋅
+ℎ
+𝑎
+𝑝
+𝑝
+𝑖
+𝑛
+𝑒
+𝑠
+𝑠
+_
+𝑛
+𝑜
+𝑟
+𝑚
++
+0.2
+⋅
+𝑒
+𝑑
+𝑢
+𝑐
+𝑎
+𝑡
+𝑖
+𝑜
+𝑛
+_
+𝑛
+𝑜
+𝑟
+𝑚
+2. Datasets finales generados
+2.1 Salaries (country–year–usd, 2020–2024)
+salaries_country  
+Columnas: region, country, year, salary_in_usd.
+
+2.2 Salaries por rol (2020–2024)
+salaries_roles  
+Columnas: year, country, region, role_category, salary_in_usd.
+
+2.3 Skills por rol (job postings 2024)
+skills_by_role_final  
+Columnas: country, year, role_category, skill_clean, count.
+
+2.4 Top skills en job postings (2024)
+top_skills_jobs  
+Columnas: country, year, job_skills, count_jobs.
+
+2.5 Cost of Living Index (2020–2024)
+cost_clean  
+Columnas: country, year, cost_of_living_index.
+
+2.6 Stack Overflow skills (2020–2024)
+skills_year  
+Columnas: year, country, skills, responders, salary_mean.
+
+2.7 Happiness (2020–2024)
+happy_clean  
+Columnas: country, happiness_score, year.
+
+2.8 Education Index (2020–2024)
+edu_clean  
+Columnas: year, country, education_index.
+
+2.9 Dataset unificado (country-year)
+country_metrics  
+Columnas:
+region, country, year, salary_in_usd, cost_of_living_index, salary_real, happiness_score, education_index, country_score.
+
+3. Fuentes originales
+3.1 Acto 1 — “Dónde se vive bien” (2020–2024)
+Data Salaries (2020–2024)
+Fuente: https://www.kaggle.com/datasets/willianoliveiragibin/data-jobs-salaries  
+Formato: TXT
+Descripción: salarios por país, rol y experiencia.
+
+Cost of Living Index (2018–2026)
+Fuente: https://www.kaggle.com/datasets/naifnoor/global-cost-of-living-index-by-country-20182026  
+Formato: CSV
+Descripción: índice comparativo de coste de vida.
+
+World Happiness Report (2011–2025)
+Fuente: https://www.worldhappiness.report/data-sharing/  
+Formato: Excel
+Descripción: bienestar subjetivo y variables explicativas.
+
+Human Development Index (2020–2023, extendido a 2024)
+Fuente: https://hdr.undp.org/data-center/documentation-and-downloads  
+Formato: CSV
+Justificación de imputación 2024:
+
+HDI es estable y de baja volatilidad.
+
+Se aplicó forward fill desde 2023.
+
+Se evitó usar valores antiguos para no distorsionar tendencias.
+
+3.2 Acto 2 — “Qué te lleva ahí” (2024)
+Job Postings (2024)
+Fuente: https://www.kaggle.com/datasets/abubakerasiel/global-data-science-and-analytics-job-dataset  
+Formato: Excel
+Descripción: ofertas reales de empleo en data science y analytics.
+
+Stack Overflow Developer Survey (2020–2025)
+Fuente: https://survey.stackoverflow.co/  
+Formato:
+
+2020–2021 → TXT
+
+2022–2025 → CSV
+Descripción: tecnologías usadas, salarios, experiencia y contexto laboral.
+
+4. Justificación del uso de Kaggle
+Kaggle se utiliza como repositorio intermedio porque:
+
+Muchos datasets tecnológicos no están disponibles en formato abierto.
+
+Kaggle ofrece versiones estructuradas y limpias.
+
+Se garantiza trazabilidad hacia fuentes oficiales cuando existe correspondencia.
+
+Reduce el coste de scraping y procesamiento inicial.
+
+5. Enlace entre actos
+El proyecto conecta ambos bloques mediante una idea central:
+
+No basta con saber dónde se vive mejor; también es necesario entender qué habilidades permiten acceder a esos contextos.
+
+Acto 1 define el destino.
+Acto 2 define la ruta profesional.
+
+6. Visualización final
+El dashboard HTML Data Career Atlas · 2020–2024 presenta:
+
+Acto 1: evolución y cierre 2024.
+
+Acto 2: skills, roles y demanda laboral 2024.
+
+7. Autoría
+Tatyana Silchenko  
+Data Science & Data Engineering
+2020–2024
+
+
+
+
       ├── raw/
       └── processed/
